@@ -48,13 +48,13 @@ namespace Chapter47_RotateImage
             config.SetDefaultMenuItems(new[] { RadialControllerSystemMenuItemKind.Volume, RadialControllerSystemMenuItemKind.Scroll });
 
             //comment these three lines to supress menu scenario
-            //controller.ControlLost += Controller_ControlLost;
-            //controller.ControlAcquired += Controller_ControlAcquired;
-            //controller.RotationChanged += Controller_RotationChanged;
+            controller.ControlLost += Controller_ControlLost;
+            controller.ControlAcquired += Controller_ControlAcquired;
+            controller.RotationChanged += Controller_RotationChanged;
 
             //uncomment it to supress the default menu
-            config.IsMenuSuppressed = true;
-            controller.ButtonHolding += Controller_ButtonHolding;
+            //config.IsMenuSuppressed = true;
+            //controller.ButtonHolding += Controller_ButtonHolding;
 
         }
 
