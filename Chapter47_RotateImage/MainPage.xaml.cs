@@ -33,8 +33,6 @@ namespace Chapter47_RotateImage
             this.InitializeComponent();
 
             controller = RadialController.CreateForCurrentView();
-            controller.RotationChanged += Controller_RotationChanged;
-            controller.ButtonHolding += Controller_ButtonHolding;
 
             controller.UseAutomaticHapticFeedback = false;
             
@@ -49,16 +47,39 @@ namespace Chapter47_RotateImage
             config.ActiveControllerWhenMenuIsSuppressed = controller;
             config.SetDefaultMenuItems(new[] { RadialControllerSystemMenuItemKind.Volume, RadialControllerSystemMenuItemKind.Scroll });
 
+            //comment these three lines to supress menu scenario
+            //controller.ControlLost += Controller_ControlLost;
+            //controller.ControlAcquired += Controller_ControlAcquired;
+            //controller.RotationChanged += Controller_RotationChanged;
+
             //uncomment it to supress the default menu
-            //config.IsMenuSuppressed = true;
+            config.IsMenuSuppressed = true;
+            controller.ButtonHolding += Controller_ButtonHolding;
+
+        }
+
+        private void Controller_ControlAcquired(RadialController sender, RadialControllerControlAcquiredEventArgs args)
+        {
+            rotationControl.Visibility = Visibility.Visible;
+        }
+
+        private void Controller_ControlLost(RadialController sender, object args)
+        {
+            rotationControl.Visibility = Visibility.Collapsed;
         }
 
         private void Controller_ButtonHolding(RadialController sender, RadialControllerButtonHoldingEventArgs args)
         {
             if (rotationControl.Visibility == Visibility.Visible)
+            {
+                controller.RotationChanged -= Controller_RotationChanged;
                 rotationControl.Visibility = Visibility.Collapsed;
+            }
             else
+            {
+                controller.RotationChanged += Controller_RotationChanged;
                 rotationControl.Visibility = Visibility.Visible;
+            }
         }
 
         private void Controller_RotationChanged(RadialController sender, RadialControllerRotationChangedEventArgs args)

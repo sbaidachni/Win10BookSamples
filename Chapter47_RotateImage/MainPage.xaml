@@ -14,6 +14,6 @@
                 <RotateTransform Angle="{Binding Angle, ElementName=rotationControl}" x:Name="rotateTransform"></RotateTransform>
             </Image.RenderTransform>
         </Image>
-        <controls:RotationControl x:Name="rotationControl"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="100" Margin="20"></controls:RotationControl>
+        <controls:RotationControl Visibility="Collapsed" x:Name="rotationControl"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="100" Margin="20"></controls:RotationControl>
     </Grid>
 </Page>
