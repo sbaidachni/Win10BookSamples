@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="BluetoothData.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BluetoothData"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:code="using:BluetoothData.Code"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <code:PairingConverter x:Name="pairingConv"></code:PairingConverter>
+    </Page.Resources>
+
+    <Grid Background="#edf7f8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="Blue">
+            <TextBlock Text="BlueNRG-1 Explorer" Foreground="White" Margin="10" HorizontalAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ProgressBar Margin="10" Width="300" HorizontalAlignment="Center" IsIndeterminate="True"></ProgressBar>
+        </Grid>
+        <ListView Grid.Row="2" Name="deviceListView" ItemsSource="{Binding}" IsItemClickEnabled="True" ItemClick="deviceListView_ItemClick"  HorizontalAlignment="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Source="Assets/stlogo.png" Margin="10" Grid.RowSpan="3"></Image>
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Id}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Name}"></TextBlock>
+                        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+                            <TextBlock Text="Can be paired: "></TextBlock>
+                            <TextBlock  Text="{Binding Pairing, Converter={StaticResource pairingConv}, Mode=OneWay}"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
