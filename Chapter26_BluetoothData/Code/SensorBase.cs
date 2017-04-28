@@ -83,7 +83,7 @@ namespace BluetoothData.Code
 
         public async void Dispose()
         {
-            await DisableNotifications();
+            if (isNotificationSupported) await DisableNotifications();
         }
     }
 }
