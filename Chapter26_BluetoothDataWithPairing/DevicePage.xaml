@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="BluetoothData.DevicePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BluetoothData"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#edf7f8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="Blue">
+            <TextBlock Text="BlueNRG-1 Explorer" Foreground="White" Margin="10" HorizontalAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
+        </Grid>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.Row="1">
+            <Pivot>
+                <PivotItem Header="Acceleration">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="X (mG):" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10"></TextBlock>
+                            <TextBlock Text="{Binding AngleX}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1">
+                            <TextBlock Text="Y (mG):" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10"></TextBlock>
+                            <TextBlock Text="{Binding AngleY}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="2">
+                            <TextBlock Text="Z (mG):" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10"></TextBlock>
+                            <TextBlock Text="{Binding AngleZ}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10"></TextBlock>
+                        </StackPanel>
+
+                    </Grid>
+
+                </PivotItem>
+                <PivotItem Header="Environmental">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Temperature}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
+                        <TextBlock Text="{Binding Pressure}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
+                    </Grid>
+                </PivotItem>
+            </Pivot>
+        </Grid>
+    </Grid>
+</Page>
