@@ -36,7 +36,7 @@ namespace Chapter26_BluetoothAdvertisement
         //comment this code to activate the receiver
         BluetoothLEAdvertisementPublisher publisher;
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             var manufacturerData = 
                 new BluetoothLEManufacturerData();
@@ -62,14 +62,19 @@ namespace Chapter26_BluetoothAdvertisement
             Debug.WriteLine(args.Status.ToString());
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            publisher.StatusChanged -= Publisher_StatusChanged;
+            publisher.Stop();
+            base.OnNavigatedFrom(e);
+        }
+
 
         //uncomment all code below to read data from the publisher
         /*private BluetoothLEAdvertisementWatcher watcher;
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var adapter = await BluetoothAdapter.GetDefaultAsync();
-
             watcher = new BluetoothLEAdvertisementWatcher();
 
             watcher.SignalStrengthFilter.InRangeThresholdInDBm = -70;
@@ -105,6 +110,8 @@ namespace Chapter26_BluetoothAdvertisement
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             watcher.Stop();
+            watcher.Stopped -= Watcher_Stopped;
+            watcher.Received -= Watcher_Received;
             base.OnNavigatedFrom(e);
         }*/
     }
