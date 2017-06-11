@@ -21,7 +21,7 @@
         <!--After Improvement-->
         <TextBlock Text="First Name:" Margin="10"></TextBlock>
         <TextBlock Text="Last Name:" Grid.Row="1" Margin="10"></TextBlock>
-        <TextBox Grid.Column="1" Width="150" Margin="10" AutomationProperties.Name="First name editing field"></TextBox>
+        <TextBox Grid.Column="1" x:Uid="firstName" Width="150" Margin="10"></TextBox>
         <TextBox Grid.Column="1" Grid.Row="1" Width="150" Margin="10" AutomationProperties.Name="Last name editing field"></TextBox>
         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Image Source="Assets/mushroom.jpg" Height="150" AutomationProperties.LabeledBy="{Binding ElementName=imageTitle}"></Image>
