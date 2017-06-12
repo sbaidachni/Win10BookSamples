@@ -4,5 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Chapter12_BasicUIAutomation"
     RequestedTheme="Light">
-
+    <Application.Resources>
+        <x:Double x:Key="KeyTipContentThemeFontSize">48</x:Double>
+    </Application.Resources>
 </Application>

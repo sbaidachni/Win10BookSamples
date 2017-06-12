@@ -27,7 +27,11 @@
             <Image Source="Assets/mushroom.jpg" Height="150" AutomationProperties.LabeledBy="{Binding ElementName=imageTitle}"></Image>
             <TextBlock Text="Just Image with a mushroom" Margin="10" HorizontalAlignment="Center" Name="imageTitle"></TextBlock>
         </StackPanel>
-        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Button" HorizontalAlignment="Center" Margin="10" />
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Button" 
+                HorizontalAlignment="Center" Margin="10" AccessKey="S"
+                AutomationProperties.AccessKey="Control S"
+                KeyTipPlacementMode="Right"
+                Click="Button_Click" />
         <!--Before Improvement-->
         <!--
         <TextBlock Text="First Name:" Margin="10"></TextBlock>

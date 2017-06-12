@@ -26,5 +26,11 @@ namespace Chapter12_BasicUIAutomation
         {
             this.InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
