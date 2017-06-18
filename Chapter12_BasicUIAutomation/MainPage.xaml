@@ -29,7 +29,7 @@
         </StackPanel>
         <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Button" 
                 HorizontalAlignment="Center" Margin="10" AccessKey="S"
-                AutomationProperties.AccessKey="Control S"
+                AutomationProperties.AccessKey="Alt S"
                 KeyTipPlacementMode="Right"
                 Click="Button_Click" />
         <!--Before Improvement-->
